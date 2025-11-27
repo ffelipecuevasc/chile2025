@@ -1,0 +1,270 @@
+/* Paleta inspirada en la bandera de Chile */
+:root {
+    --chile-red: #dc2626;
+    --chile-blue: #1d4ed8;
+    --bg-light: #f3f4f6;
+    --text-main: #111827;
+    --text-muted: #6b7280;
+    --card-border: rgba(15, 23, 42, 0.08);
+}
+
+/* Imágenes: estilo base común */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Fondo general “light” */
+body {
+    background: radial-gradient(circle at top, #ffffff 0, #e5e7eb 55%);
+    color: var(--text-main);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.page-wrapper {
+    min-height: 100vh;
+    padding: 2.5rem 0 3rem;
+}
+
+/* Encabezado centrado */
+.page-header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.flag-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+/* Bandera de Chile pequeña en el header */
+.flag-img {
+    max-width: 100px; /* tamaño pequeño */
+    border-radius: 0.6rem;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.18);
+    border: 1px solid rgba(148, 163, 184, 0.6);
+}
+
+.page-title-label {
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-weight: 600;
+    font-size: 0.8rem;
+    color: var(--chile-blue);
+}
+
+.page-title {
+    font-weight: 800;
+    color: var(--text-main);
+    font-size: clamp(2rem, 3vw, 2.6rem);
+}
+
+.page-subtitle {
+    color: var(--text-muted);
+    max-width: 540px;
+}
+
+/* Línea de tiempo vertical */
+.timeline {
+    position: relative;
+    margin-top: 2.5rem;
+    padding-left: 1.5rem;
+}
+
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 12px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, var(--chile-blue), var(--chile-red));
+    opacity: 0.9;
+    border-radius: 999px;
+}
+
+@media (min-width: 768px) {
+    .timeline {
+        padding-left: 2.2rem;
+    }
+
+    .timeline::before {
+        left: 20px;
+    }
+}
+
+/* Cada item de la línea de tiempo */
+.timeline-item {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+/* Marcador circular del día */
+.timeline-marker {
+    position: absolute;
+    left: 0;
+    top: 1.25rem;
+    width: 18px;
+    height: 18px;
+    border-radius: 999px;
+    background: #ffffff;
+    border: 3px solid var(--chile-red);
+    box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.15);
+}
+
+@media (min-width: 768px) {
+    .timeline-marker {
+        left: 12px;
+    }
+}
+
+/* Tarjeta principal */
+.card-timeline {
+    margin-left: 2.6rem;
+    background: #ffffff;
+    border-radius: 1.1rem;
+    border: 1px solid var(--card-border);
+    box-shadow: 0 14px 35px rgba(15, 23, 42, 0.12);
+    overflow: hidden;
+}
+
+@media (max-width: 575.98px) {
+    .card-timeline {
+        margin-left: 2.2rem;
+    }
+}
+
+/* Cabecera de la tarjeta (solo badges) */
+.card-timeline-header {
+    padding: 1.1rem 1.25rem 0.3rem;
+}
+
+.badge-day {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    border-radius: 999px;
+    padding: 0.25rem 0.8rem;
+    background: rgba(37, 99, 235, 0.06);
+    color: var(--chile-blue);
+    border: 1px solid rgba(37, 99, 235, 0.2);
+}
+
+.badge-location {
+    font-size: 0.7rem;
+    border-radius: 999px;
+    padding: 0.25rem 0.7rem;
+    background: rgba(220, 38, 38, 0.06);
+    color: var(--chile-red);
+    border: 1px solid rgba(220, 38, 38, 0.2);
+}
+
+/* Contenedor de la imagen + franja de texto */
+.timeline-image-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Imagen del día (más baja, sin deformar) */
+.day-image {
+    width: 100%;
+    height: 320px;          /* controlas la altura visible */
+    object-fit: cover;      /* mantiene proporción, recortando lo que sobre */
+    border-radius: 0;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.22);
+    transition: transform 0.6s ease;
+}
+
+/* Pequeño zoom al pasar el mouse */
+.timeline-image-wrapper:hover .day-image {
+    transform: scale(1.02);
+}
+
+/* Franja blanca semitransparente sobre la imagen */
+.image-strip {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.7); /* 70% blanco, 30% transparente */
+    padding: 0.65rem 1.1rem;
+    backdrop-filter: blur(4px); /* efecto vidrio esmerilado */
+}
+
+.image-strip .card-title-main {
+    color: var(--text-main);
+    font-size: 1.05rem;
+    margin-bottom: 0.2rem;
+}
+
+.image-strip .card-subtitle-main {
+    font-size: 0.86rem;
+    color: #374151;
+}
+
+/* Un poco más compacto en móviles */
+@media (max-width: 575.98px) {
+    .image-strip {
+        padding: 0.5rem 0.8rem;
+    }
+
+    .image-strip .card-title-main {
+        font-size: 0.95rem;
+    }
+
+    .image-strip .card-subtitle-main {
+        font-size: 0.8rem;
+    }
+}
+
+/* Cuerpo de la tarjeta */
+.card-body-custom {
+    padding: 0.85rem 1.25rem 1.1rem;
+}
+
+/* Chip de horario */
+.time-chip {
+    font-size: 0.78rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    background: #f9fafb;
+    border: 1px solid rgba(148, 163, 184, 0.9);
+    color: var(--text-main);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.time-chip svg {
+    width: 14px;
+    height: 14px;
+}
+
+/* Lista de actividades */
+.activities-list {
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+    padding-left: 1.1rem;
+    font-size: 0.9rem;
+    color: #374151;
+}
+
+.activities-list li + li {
+    margin-top: 0.2rem;
+}
+
+/* Pie de la tarjeta */
+.card-footer-note {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    border-top: 1px solid rgba(209, 213, 219, 0.9);
+    padding: 0.6rem 1.25rem 0.75rem;
+    background: #f9fafb;
+}
