@@ -268,3 +268,60 @@ body {
     padding: 0.6rem 1.25rem 0.75rem;
     background: #f9fafb;
 }
+
+/* Separador de ciudad dentro de la línea de tiempo */
+.timeline-separator {
+    position: relative;
+    margin: 2.6rem 0 2rem;
+}
+
+/* Marcador azul para cambio de ciudad */
+.timeline-marker-city {
+    border-color: var(--chile-blue);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.18);
+}
+
+/* Tarjeta-pastilla del separador */
+.city-separator-card {
+    margin-left: 2.6rem; /* alineado con las cards principales */
+    background: linear-gradient(
+            90deg,
+            #0b1f4b,
+            #7b1020
+    ); /* azul oscuro → rojo vino */
+    border-radius: 999px;
+    border: 1px solid rgba(15, 23, 42, 0.45);
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.25);
+    padding: 0.85rem 1.6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+}
+
+/* Título principal del separador (la nueva ciudad) */
+.city-separator-title {
+    font-size: 1.3rem;          /* más grande */
+    font-weight: 800;
+    color: #f9fafb;             /* casi blanco */
+}
+
+/* Texto breve que explica el cambio de tramo */
+.city-separator-text {
+    font-size: 0.9rem;
+    color: #e5e7eb;             /* gris claro */
+}
+
+/* En pantallas más grandes, título y texto en línea pero alineados a la izquierda */
+@media (min-width: 576px) {
+    .city-separator-card {
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 1.5rem;
+    }
+
+    .city-separator-text {
+        max-width: 480px;
+    }
+}
