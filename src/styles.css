@@ -301,6 +301,7 @@ body {
 
 /* Título principal del separador (la nueva ciudad) */
 .city-separator-title {
+    text-transform: uppercase;
     font-size: 1.3rem;          /* más grande */
     font-weight: 800;
     color: #f9fafb;             /* casi blanco */
@@ -313,15 +314,19 @@ body {
 }
 
 /* En pantallas más grandes, título y texto en línea pero alineados a la izquierda */
-@media (min-width: 576px) {
+@media (max-width: 575.98px) {
     .city-separator-card {
-        flex-direction: row;
-        align-items: center;
-        justify-content: flex-start;
-        gap: 1.5rem;
+        margin-left: 2.2rem;        /* un poco menos pegado al borde de la timeline */
+        padding: 1rem 1.4rem;       /* más espacio interno */
+        align-items: center;        /* centra el contenido en la pastilla */
+        text-align: center;         /* título + texto centrados */
+    }
+
+    .city-separator-title {
+        font-size: 1.15rem;         /* un pelín más chico para que respire */
     }
 
     .city-separator-text {
-        max-width: 480px;
+        font-size: 0.86rem;
     }
 }
