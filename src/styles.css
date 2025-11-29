@@ -396,4 +396,30 @@ body {
         min-width: 44%;                   /* aprox. 2 botones por fila */
         text-align: center;
     }
-}s
+}
+
+/* Ajustes de badges en pantallas pequeñas */
+@media (max-width: 575.98px) {
+    .card-timeline-header {
+        flex-direction: column;       /* día arriba, ciudad abajo */
+        align-items: flex-start;
+        gap: 0.35rem;
+    }
+
+    .badge-day,
+    .badge-location {
+        font-size: 0.75rem;           /* texto más pequeño */
+        line-height: 1.2;
+        padding: 0.25rem 0.7rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;           /* centra el texto si hay salto */
+        white-space: normal;          /* permite salto de línea */
+        max-width: 100%;              /* que no fuerce a encoger la card */
+    }
+
+    .badge-location {
+        align-self: flex-start;       /* se mantiene alineado al inicio de la card */
+    }
+}
