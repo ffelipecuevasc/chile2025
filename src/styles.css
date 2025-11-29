@@ -8,6 +8,11 @@
     --card-border: rgba(15, 23, 42, 0.08);
 }
 
+/* Scroll suave al hacer clic en los botones */
+html {
+    scroll-behavior: smooth;
+}
+
 /* Imágenes: estilo base común */
 img {
     max-width: 100%;
@@ -330,3 +335,65 @@ body {
         font-size: 0.86rem;
     }
 }
+
+/* Navegación por ciudades (debajo del encabezado) */
+.city-nav {
+    margin-top: 1.8rem;
+    margin-bottom: 1.4rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+}
+
+/* Botón de ciudad con mismo look que el city-separator */
+.city-nav-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.55rem 1.35rem;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #0b1f4b, #7b1020); /* azul oscuro → rojo vino */
+    border: 1px solid rgba(15, 23, 42, 0.45);
+    color: #f9fafb;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    text-decoration: none;
+    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.28);
+    transition:
+            transform 0.15s ease,
+            box-shadow 0.15s ease,
+            filter 0.15s ease;
+}
+
+.city-nav-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 12px 24px rgba(15, 23, 42, 0.35);
+    filter: brightness(1.05);
+}
+
+.city-nav-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 6px 14px rgba(15, 23, 42, 0.3);
+}
+
+.city-nav-btn:focus-visible {
+    outline: 2px solid #fcd34d;
+    outline-offset: 2px;
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 575.98px) {
+    .city-nav {
+        justify-content: center;          /* centramos todos los botones */
+    }
+
+    .city-nav-btn {
+        font-size: 0.8rem;                /* un poco más pequeños */
+        padding: 0.4rem 0.9rem;
+        min-width: 44%;                   /* aprox. 2 botones por fila */
+        text-align: center;
+    }
+}s
