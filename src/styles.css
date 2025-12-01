@@ -336,31 +336,53 @@ body {
     }
 }
 
-/* Navegación por ciudades (debajo del encabezado) */
-.city-nav {
+/* CONTENEDOR DEL NAV + LÍNEA DE TIEMPO */
+.city-nav-wrapper {
+    position: relative;
     margin-top: 1.8rem;
     margin-bottom: 1.4rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    justify-content: center;
 }
 
-/* Botón de ciudad con mismo look que el city-separator */
+/* Línea que une todos los destinos (detrás de los botones) */
+.city-nav-wrapper::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 3px;
+    background: linear-gradient(90deg, #0b1f4b, #7b1020); /* mismos colores */
+    opacity: 0.45;
+    z-index: 0;
+}
+
+/* NAVBAR DE CIUDADES */
+.city-nav {
+    display: flex;
+    flex-wrap: wrap;          /* se ajusta según ancho; luego forzamos una fila en pantallas grandes */
+    gap: 0.6rem;
+    justify-content: center;
+    padding: 0.35rem 0;
+}
+
+/* BOTONES DEL NAVBAR (mismos colores que antes, pero texto más pequeño) */
 .city-nav-btn {
+    position: relative;
+    z-index: 1;               /* por encima de la línea de fondo */
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0.55rem 1.35rem;
+    padding: 0.4rem 1.0rem;
     border-radius: 999px;
-    background: linear-gradient(90deg, #0b1f4b, #7b1020); /* azul oscuro → rojo vino */
+    background: linear-gradient(90deg, #0b1f4b, #7b1020);
     border: 1px solid rgba(15, 23, 42, 0.45);
     color: #f9fafb;
     font-weight: 600;
-    font-size: 0.85rem;
-    letter-spacing: 0.03em;
+    font-size: 0.78rem;       /* texto más pequeño */
+    letter-spacing: 0.02em;
     text-transform: uppercase;
     text-decoration: none;
+    white-space: nowrap;      /* evita cortes feos en escritorio */
     box-shadow: 0 8px 18px rgba(15, 23, 42, 0.28);
     transition:
             transform 0.15s ease,
@@ -384,42 +406,24 @@ body {
     outline-offset: 2px;
 }
 
-/* Ajustes para pantallas pequeñas */
+/* 📱 MÓVIL: varios botones por fila, centrados */
 @media (max-width: 575.98px) {
     .city-nav {
-        justify-content: center;          /* centramos todos los botones */
+        justify-content: center;
     }
 
     .city-nav-btn {
-        font-size: 0.8rem;                /* un poco más pequeños */
-        padding: 0.4rem 0.9rem;
-        min-width: 44%;                   /* aprox. 2 botones por fila */
+        font-size: 0.75rem;
+        padding: 0.35rem 0.7rem;
+        min-width: 44%;        /* ~2 botones por fila */
+        white-space: normal;   /* permite dos líneas si es necesario */
         text-align: center;
     }
 }
 
-/* Ajustes de badges en pantallas pequeñas */
-@media (max-width: 575.98px) {
-    .card-timeline-header {
-        flex-direction: column;       /* día arriba, ciudad abajo */
-        align-items: flex-start;
-        gap: 0.35rem;
-    }
-
-    .badge-day,
-    .badge-location {
-        font-size: 0.75rem;           /* texto más pequeño */
-        line-height: 1.2;
-        padding: 0.25rem 0.7rem;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;           /* centra el texto si hay salto */
-        white-space: normal;          /* permite salto de línea */
-        max-width: 100%;              /* que no fuerce a encoger la card */
-    }
-
-    .badge-location {
-        align-self: flex-start;       /* se mantiene alineado al inicio de la card */
+/* 🖥️ ESCRITORIO: una sola fila */
+@media (min-width: 992px) {
+    .city-nav {
+        flex-wrap: nowrap;     /* fuerza todos los destinos en una fila */
     }
 }
